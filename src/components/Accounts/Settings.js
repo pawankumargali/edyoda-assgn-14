@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 
 
-function Settings({role}) {
+function Settings({ role }) {
 
   const [settings, setSettings] = useState({name:'', email:'', password:'', password2:'', phone:''});
   const [showUpdateSuccessfulPopUp, setShowUpdateSuccessfulPopUp] = useState(false);

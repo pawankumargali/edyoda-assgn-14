@@ -29,6 +29,7 @@ function Avatar({role}) {
   const handlePhotoUploadBtnClick = () => fileInput.current.click();
 
   const handlePhotoChange = e => {
+    if(Number(e.target.files[0].size)/Math.pow(10,6) > 1) return;
     const newImgURL = URL.createObjectURL(e.target.files[0]);
     setProfilePic(newImgURL);
     if(!localStorage.getItem("projectData")) return;
@@ -51,12 +52,15 @@ function Avatar({role}) {
             <i class="far fa-trash-alt tm-product-delete-icon"></i>
           </span>
         </div>
-        <input type="file" hidden ref={fileInput} onChange={handlePhotoChange}/>
+
+
+        <input type="file" ref={fileInput} hidden onChange={handlePhotoChange} />
         <button class="btn btn-primary btn-block text-uppercase"   
           onClick={handlePhotoUploadBtnClick} 
         >
           Upload New Photo
         </button>
+
       </div>
     </div>
   );
