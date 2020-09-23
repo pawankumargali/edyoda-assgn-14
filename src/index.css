@@ -707,3 +707,8 @@ input[type="checkbox"]:focus {
     max-height: 350px;
   }
 }
+
+
+.delete-row-checkbox:checked {
+  background-color: #F5A623;
+}

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 function ProductDetails({setFormErr}) {
     
-    const [details, setDetails] = useState({name:'', description:'', category:'', expire_date:'', stock:'' });
+    const [details, setDetails] = useState({name:'', description:'', category:'', expireDate:'', stock:'', unitSold:'' });
     
     const categories = ["New Arrival", "Latest Fashion", "Trending", "Christmas Special", "New Year Special"];
     const handleDetailsChange = e => setDetails({...details, [e.target.name]:e.target.value});
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(details);
         const errs=[];
        for(const field in details)
             if(!details[field]) errs.push(`${field} cannot be empty`);
@@ -19,6 +20,7 @@ function ProductDetails({setFormErr}) {
         if(!localStorage.getItem('projectData')) return;
         const projectData = JSON.parse(localStorage.getItem('projectData'));
         projectData.productsPage.products.push(details);
+        console.log(projectData);
         localStorage.setItem('projectData',JSON.stringify(projectData));
     }
 
@@ -72,17 +74,17 @@ function ProductDetails({setFormErr}) {
             </select>
           </div>
           <div className="row">
-              <div className="form-group mb-3 col-xs-12 col-sm-6">
+              <div className="form-group mb-3 col-xs-12 col-sm-12">
                   <label
-                    for="expire_date"
+                    for="expireDate"
                     >Expiry Date
                   </label>
                   <input
-                    id="expire_date"
-                    name="expire_date"
+                    id="expireDate"
+                    name="expireDate"
                     type="date"
                     className="form-control validate"
-                    value={details.expire_date || ''}
+                    value={details.expireDate || ''}
                     onChange={handleDetailsChange}
                     data-large-mode="true"
                   />
@@ -98,6 +100,21 @@ function ProductDetails({setFormErr}) {
                     type="number"
                     className="form-control validate"
                     value={details.stock || ''}
+                    onChange={handleDetailsChange}
+                    required
+                  />
+                </div>
+                <div className="form-group mb-3 col-xs-12 col-sm-6">
+                  <label
+                    for="stock"
+                    >Units Sold
+                  </label>
+                  <input
+                    id="unitSold"
+                    name="unitSold"
+                    type="number"
+                    className="form-control validate"
+                    value={details.unitSold || ''}
                     onChange={handleDetailsChange}
                     required
                   />

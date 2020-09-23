@@ -4,6 +4,7 @@ import Accounts from './components/Accounts/Accounts';
 import AddProduct from './components/AddProduct/AddProduct';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import Products from './components/Products/Products';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={Accounts} />
+          <Route path="/products" exact component={Products} />
           <Route path="/product/add" exact component={AddProduct} />
           <Route path="/login" exact component={Login} />
         </Switch>
