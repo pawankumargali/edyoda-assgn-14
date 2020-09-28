@@ -59,7 +59,14 @@ function Products() {
         localStorage.setItem('projectData', JSON.stringify(projectData));
     }
 
-    let delRows=[];
+    const handleCategoryDelete = index => {
+      const updatedCategories = categories.filter((cat, ind) => ind!==index)
+      setCategories(updatedCategories);
+      const projectData = JSON.parse(localStorage.getItem('projectData'));
+      projectData.productsPage.categories=updatedCategories;
+      localStorage.setItem('projectData', JSON.stringify(projectData));
+    }
+
     return (
         <div className="container mt-5">
         <div className="row tm-content-row">
@@ -108,7 +115,7 @@ function Products() {
                 <button className="btn btn-primary btn-block text-uppercase mb-3">
                     Add new product
                 </button>
-                </Link>
+              </Link>
               <button className="btn btn-primary btn-block text-uppercase"
                 onClick={handleMultipleDelete}
               >
@@ -122,94 +129,19 @@ function Products() {
               <div className="tm-product-table-container">
                 <table className="table tm-table-small tm-product-table">
                   <tbody>
-                    <tr>
-                      <td className="tm-product-name">Product Category 1</td>
+                    {categories.length!==0 && categories.map((cat, index) =>
+                      <tr key={cat+index}>
+                      <td className="tm-product-name">{cat}</td>
                       <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
+                        <button 
+                          className="tm-product-delete-link"
+                          onClick={() => handleCategoryDelete(index)}
+                        >
                           <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
+                        </button>
                       </td>
                     </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 2</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 3</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 4</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 5</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 6</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 7</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 8</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 9</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 10</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="tm-product-name">Product Category 11</td>
-                      <td className="text-center">
-                        <a href="#" className="tm-product-delete-link">
-                          <i className="far fa-trash-alt tm-product-delete-icon"></i>
-                        </a>
-                      </td>
-                    </tr>
+                    )}
                   </tbody>
                 </table>
               </div>

@@ -511,6 +511,7 @@ input[type="checkbox"]:focus {
   justify-content: center;
   color: #fff;
   background: #aaa;
+  margin-top:50px;
 }
 .tm-product-img-edit {
   max-width: 100%;
@@ -531,6 +532,14 @@ input[type="checkbox"]:focus {
   text-align: center;
   padding-top: 15px;
   font-size: 22px;
+  cursor:pointer; 
+  position:absolute;
+  top:25%;
+  left:45%;
+}
+
+@media(max-width: 991px) {
+  .tm-upload-icon { top: 40%; }
 }
 .tm-login-col {
   max-width: 470px;
@@ -708,7 +717,15 @@ input[type="checkbox"]:focus {
   }
 }
 
-
 .delete-row-checkbox:checked {
   background-color: #F5A623;
+}
+
+.notif-img {
+  width:100%;
+  height: 100%;
+}
+
+.logout-btn {
+  cursor: pointer;
 }

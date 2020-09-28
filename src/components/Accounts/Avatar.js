@@ -39,23 +39,23 @@ function Avatar({role}) {
   }
   
   return (
-    <div class="tm-block-col tm-col-avatar">
-      <div class="tm-bg-primary-dark tm-block tm-block-avatar">
-        <h2 class="tm-block-title">Change Avatar</h2>
-        <div class="tm-avatar-container">
+    <div className="tm-block-col tm-col-avatar">
+      <div className="tm-bg-primary-dark tm-block tm-block-avatar">
+        <h2 className="tm-block-title">Change Avatar</h2>
+        <div className="tm-avatar-container">
           <img
             src={profilePic==='' ? defaultAvatar : profilePic}
             alt="Avatar"
-            class="tm-avatar img-fluid mb-4"
+            className="tm-avatar img-fluid mb-4"
           />
-          <span class="tm-avatar-delete-link" onClick={deleteProfilePic}>
-            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+          <span className="tm-avatar-delete-link" onClick={deleteProfilePic}>
+            <i className="far fa-trash-alt tm-product-delete-icon"></i>
           </span>
         </div>
 
 
         <input type="file" ref={fileInput} hidden onChange={handlePhotoChange} />
-        <button class="btn btn-primary btn-block text-uppercase"   
+        <button className="btn btn-primary btn-block text-uppercase"   
           onClick={handlePhotoUploadBtnClick} 
         >
           Upload New Photo

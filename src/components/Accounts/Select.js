@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react';
 
 function Select({onChangeHandler}) {
 
   const roles = ['Admin', 'Editor', 'Merchant', 'Customer'];
   return (
-      <div class="col-12 tm-block-col">
-      <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-        <h2 class="tm-block-title">List of Accounts</h2>
-        <p class="text-white">Accounts</p>
-        <select class="custom-select" onChange={onChangeHandler}>
+      <div className="col-12 tm-block-col">
+      <div className="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <h2 className="tm-block-title">List of Accounts</h2>
+        <p className="text-white">Accounts</p>
+        <select className="custom-select" onChange={onChangeHandler}>
           <option value="">Select account</option>
           {roles.map((role, index) => 
           ( <option 
